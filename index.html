@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<title>Alliance of the Little Guys</title>
+<link href="https://fonts.googleapis.com/css?family=Anton|Baloo+Bhai|Luckiest+Guy|Oswald|Raleway:400,700&display=swap" rel="stylesheet">
+<!-- <link rel="stylesheet" type="text/css" href="style.css" /> -->
+<style>
+
+/* GENERAL */
+
+    body {
+        background-color: #FFE066;
+        margin: auto;
+    }
+    img {
+        flex-shrink: 0;
+    }
+    h1 {
+        color: #247BA0;
+        font: 40px 'Luckiest Guy', cursive;
+        margin: 0;
+        text-align: center;
+    }
+    p {
+        margin: 0;
+        font-family: 'Raleway', sans-serif;
+    }
+    .output, .input {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        font-family: 'Raleway', sans-serif;
+        text-align: justify;
+    }
+    .to_translation, .translate, .perso>img, .perso2>img {
+        cursor: pointer;
+    }
+
+/* BUBBLE WITH OUTPUT */
+
+    .bubble {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 20px;
+    }
+    .bubblepart {
+        height: 50px;
+        position: relative;
+        align-self: center;
+        right: 60px;
+    }
+    .output {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: auto;
+    }
+
+/* BOTTOM PART WITH INPUT */
+
+    .bottom_part {
+        position: absolute;
+        left: 0;
+        right: 0;
+        z-index: 0;
+        top: 610px;
+    }
+    .bottom_box {
+        margin: auto;
+        display: grid;
+        background-color: #247BA0;
+        padding: 20px;
+        border-radius: 10px;
+        gap: 20px;
+        grid-template-columns: auto 200px;
+    }
+    .talklike {
+        display: flex;
+        margin: auto;
+    }
+    .deco1 {
+        margin: auto;
+        display: flex;
+        background: #fcebd7;
+        padding: 0px 20px 0px;
+        z-index: -1;
+    }
+    .deco2 {
+        background-color: hotpink;
+        border-radius: 4px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        height: 20px;
+        top: 0.5em;
+        z-index: -2;
+    }
+	form {
+        grid-row: 1 / span 2;
+	}
+    .input {
+        grid-row: 1 / span 2;
+        font: 15px 'Raleway', sans-serif;
+        border: 1px solid #ccc;
+    }
+    .nb_tries {
+        background-color: #FFE066;
+        padding: 20px;
+        border-radius: 4px;
+    }
+    .nb_tries > div, .nb_tries > p {
+        display: flex;
+        justify-content: center;
+    }
+    .heart {
+        width: 25px;
+        height: auto;
+        margin: 10px auto 0px;
+    }
+    .translate {
+        border: none;
+        background-color: hotpink;
+        border-radius: 4px;
+        height: 30px;
+        font: 15px 'Raleway', sans-serif;
+    }
+
+
+
+/* DECORATIVE BANDS */
+
+    .band {
+        background-color: #247BA0;
+        height: 200px;
+        width: 100vw;
+        position: absolute;
+        z-index: -1;
+
+        /* ------------------------------------------------ */
+        /* add margin-top to adjust to the images */
+        /*margin-top: 150px;*/
+        /* ------------------------------------------------ */
+    }
+
+/* MAIN PAGE */
+
+    .title {
+        margin-top: 40px;
+        margin-bottom: 70px;
+        font-size: 70px;
+        color: #FFE066;
+    }
+    .explanation {
+        position: absolute;
+        top: 650px;
+        max-width: 900px;
+        margin: auto;
+        font-size: 20px;
+        text-align: justify;
+    }
+    .to_translation {
+        border-radius: 50%;
+        background-color: #FFE066;
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        width: 70px;
+        height: 70px;
+        z-index: 5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .to_translation>img {
+        height: 35px;
+    }
+
+/* IMAGES */
+
+    .perso, .perso0, .perso2 {
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        margin:auto;
+        z-index: 1;
+        left: 0;
+        right: 0;
+    }
+
+/* JS */
+
+    .selected_name {
+        color: #FFE066;
+        margin-left: 10px;
+    }
+    .transparent {
+        opacity: 0.6;
+    }
+    .no_display {
+        display: none;
+    }
+    .flex {
+        display: flex;
+    }
+    .grid {
+        display: grid;
+    }
+    .beige {
+        background-color: #fcebd7;
+    }
+
+/* ************************************************* */
+
+@media (min-width: 768px) {
+
+/* IMAGES */
+
+    .perso2 {
+        display: none;
+    }
+    /*.perso, */.perso0 {
+        top: 240px;
+    }
+    .perso0 {
+        display: flex;
+    }
+    .perso0 > img {
+        height: 350px;
+    }
+    .perso > img {
+        height: 300px;
+        float: left;
+    }
+    /*.minion,*/ .minion0 {
+        margin-left: 80px;
+        margin-right: 20px;
+    }
+    .perso>img:hover {
+        opacity: 1;
+    }
+    /*.perso>.selected {
+        height: 350px;
+        opacity: 1;
+    }*/
+
+/* DECORATIVE BANDS */
+
+    .right_left {
+        background-color: #fcebd7;
+        width: 950px;
+        height: 100vh;
+        margin: auto;
+    }
+
+/* BUBBLE WITH OUTPUT */
+
+    .output {
+        width: 760px;
+        height: 100px;
+        margin: auto;
+    }
+
+/* BOTTOM PART WITH INPUT */
+
+    .bottom_box {
+        width: 720px;
+    }
+	.input {
+		width: 460px;
+		height: 100px;
+	}
+    .deco2 {
+        width: 760px;
+    }
+
+/* ---------------------------------------------------------- */
+/* the rotate animation in the first page */
+/* some css styles for them */
+/*
+#carousel {
+	position:relative;
+	z-index:2;
+	margin-top:20px;
+	justify-content: center;
+	height: 500px;
+	align-items: center;
+}
+*/
+#carousel img {
+    /*
+	top:40%;
+	cursor:pointer;
+	width: auto;
+	height: 350px;
+    */
+    position: absolute;
+    transition:transform .5s ease-in-out;
+	  opacity: 0;
+    top: 405px;
+}
+/* ---------------------------------------------------------- */
+
+}
+
+/* ************************************************* */
+
+@media (max-width: 768px) {
+
+/* JS */
+
+    .jaune {
+        background-color: #fcebd7;
+    }
+
+/* IMAGES */
+
+    .perso {
+        opacity: 0;
+    }
+    .perso2, .perso0 {
+        grid-template-columns: auto auto;
+        top: 270px;
+        gap: 20px;
+    }
+    .perso0 {
+        display: grid;
+    }
+    .groot2, .yoda2, .minion2, .groot0, .yoda0, .minion0 {
+       height: 150px;
+       margin: auto;
+    }
+    .groot2, .yoda2, .minion2 {
+        opacity: 0.6;
+    }
+    .perso>.selected {
+        /*height: 300px;
+        opacity: 1;*/
+    }
+    .selected, .minion0 {
+        grid-row: 1 / span 2;
+        height: 300px;
+        opacity: 1;
+    }
+    .groot0, .groot2 {
+        margin: auto;
+    }
+
+/* BUBBLE WITH OUTPUT */
+
+
+    .bubble {
+        max-width: 540px;
+        margin: auto;
+    }
+    .output {
+        height: 150px;
+    }
+
+/* BOTTOM PART WITH INPUT */
+
+    .bottom_box {
+		width: 500px;
+        min-width: 500px;
+    }
+	.input {
+		width: 240px;
+		height: 100px;
+	}
+    .deco2 {
+        max-width: 540px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+    <div class="right_left">
+
+    <h1 class="title">Little Guys Translator</h1>
+
+    <div class="bubble">
+        <div class="output"><p></p></div>
+        <img class="bubblepart" src="img/bubblepart.png">
+    </div>
+
+    <div class="perso0">
+        <div class="band"></div>
+        <img class="groot0" src="img/groot.png">
+        <img class="minion0" src="img/minion.png">
+        <img class="yoda0" src="img/yoda.png">
+    </div>
+
+<!-- ------------------------------------------------------------- -->
+<!-- the rotating animation part on the first page-->
+<!-- it is auto rotated and it can be clicked on as well -->
+
+    <div class="perso" id="carousel">
+
+        <img src="img/minion.png" class="minion rotate" data-url="#">
+        <img src="img/yoda.png" class="yoda rotate" data-url="#">
+        <img src="img/groot.png" class="groot rotate" data-url="#">
+    </div>
+
+<!-- --------------------------------------------------------------- -->
+
+<!--
+    <div class="perso">
+        <img class="groot transparent" src="img/groot.png">
+        <img class="minion selected" src="img/minion.png">
+        <img class="yoda transparent" src="img/yoda.png">
+    </div>
+-->
+
+    <div class="perso2">
+        <img class="minion2 selected" src="img/minion.png">
+        <img class="yoda2" src="img/yoda.png">
+        <img class="groot2" src="img/groot.png">
+    </div>
+
+    <p class="explanation">Want to talk like one of those weird little guys? You have come to the right place! Here we translate your text from english to Groot, Minion or Yoda speak. 5 translations per hour. Give it a try!</p>
+
+    <div class="bottom_part">
+        <div class="talklike">
+            <div class="deco1">
+                <h1>Talk like</h1>
+                <h1 class="selected_name">a Minion</h1>
+            </div>
+            <div class="deco2"></div>
+        </div>
+        <div class="bottom_box">
+            <form><textarea class="input" name="inputed_text" placeholder="Type your text in english here"></textarea></form>
+            <div class="nb_tries">
+                <p>NUMBER OF TRIES</p>
+                <div><img class="heart" src="img/heart.png"><img class="heart" src="img/heart.png"><img class="heart" src="img/heart.png"><img class="heart" src="img/heart.png"><img class="heart" src="img/heart.png"></div>
+            </div>
+            <button class="translate">TRANSLATE</button>
+        </div>
+    </div>
+
+    <div class="to_translation"><img src="img/arrow.png"></div>
+
+
+
+<script src="./jquery-3.2.1/jquery-3.2.1.min.js"></script>
+<script src="main.js"></script>
+
+<!-- ------------------------------------------------------------- -->
+<!-- the js part for the rotating animation -->
+<script src="jquery-1.11.0.js"></script>
+<script src="slider.js"></script>
+
+<!-- this script instructs the webpage to play animation when open the index.html -->
+
+<script>
+	$(function() {
+		$('#carousel').carousel({
+			curDisplay: 0,
+		});
+	});
+</script>
+
+<!-- ------------------------------------------------------------ -->
+
+
+
+</body>
+
+</html>
